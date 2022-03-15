@@ -1,8 +1,14 @@
 package com.juandieruiz.di.atributo;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Motor {
 
+    @Value("Electrico")
     private String marca;
+    @Value("2016")
     private Integer modelo;
 
     public Motor(){
