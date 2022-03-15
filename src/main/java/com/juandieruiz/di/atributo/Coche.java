@@ -7,33 +7,33 @@ import org.springframework.stereotype.Component;
 @Component
 public class Coche {
 
-    private String marca;
+    private String owner;
 
-    private Integer modelo;
+    private Integer model;
 
     private Motor motor;
 
     @Autowired
-    public Coche(@Value("Tesla") String marca,@Value("2020") Integer modelo, Motor motor) {
-        this.marca = marca;
-        this.modelo = modelo;
+    public Coche(@Value("Tesla") String owner,@Value("2020") Integer model, Motor motor) {
+        this.owner = owner;
+        this.model = model;
         this.motor = motor;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
-    public Integer getModelo() {
-        return modelo;
+    public Integer getModel() {
+        return model;
     }
 
-    public void setModelo(Integer modelo) {
-        this.modelo = modelo;
+    public void setModel(Integer model) {
+        this.model = model;
     }
 
     public Motor getMotor() {
@@ -46,9 +46,9 @@ public class Coche {
 
     @Override
     public String toString() {
-        return "Coche{" +
-                "marca='" + marca + '\'' +
-                ", modelo=" + modelo +
+        return "Características Coche = {" +
+                "owner='" + owner + '\'' +
+                ", model=" + model +
                 ", motor=" + motor +
                 '}';
     }

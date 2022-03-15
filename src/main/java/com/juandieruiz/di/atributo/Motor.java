@@ -6,37 +6,37 @@ import org.springframework.stereotype.Component;
 @Component
 public class Motor {
 
-    private String marca;
-    private Integer modelo;
+    private String type;
+    private Integer year;
 
 
 
-    public Motor(@Value("Electrico") String marca, @Value("2016") Integer modelo) {
-        this.marca = marca;
-        this.modelo = modelo;
+    public Motor(@Value("Electric") String type, @Value("2016") Integer year) {
+        this.type = type;
+        this.year = year;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getElectric() {
+        return type;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setElectric(String type) {
+        this.type = type;
     }
 
-    public Integer getModelo() {
-        return modelo;
+    public Integer getYear() {
+        return year;
     }
 
-    public void setModelo(Integer modelo) {
-        this.modelo = modelo;
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     @Override
     public String toString() {
-        return "Motor{" +
-                "marca='" + marca + '\'' +
-                ", modelo=" + modelo +
+        return "Características {" +
+                "type='" + type + '\'' +
+                ", year=" + year +
                 '}';
     }
 }
