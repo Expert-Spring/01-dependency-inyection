@@ -9,25 +9,21 @@ public class Motor {
     private String type;
     private Integer year;
 
-
-
-    public Motor(@Value("Electric") String type, @Value("2016") Integer year) {
-        this.type = type;
-        this.year = year;
+    public Motor() {
     }
 
-    public String getElectric() {
+    public String getType() {
         return type;
     }
-
-    public void setElectric(String type) {
+    @Value("Electric")
+    public void setType(String type) {
         this.type = type;
     }
 
     public Integer getYear() {
         return year;
     }
-
+    @Value("2019")
     public void setYear(Integer year) {
         this.year = year;
     }

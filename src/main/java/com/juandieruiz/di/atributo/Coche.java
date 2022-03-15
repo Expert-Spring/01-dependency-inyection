@@ -13,17 +13,13 @@ public class Coche {
 
     private Motor motor;
 
-    @Autowired
-    public Coche(@Value("Tesla") String owner,@Value("2020") Integer model, Motor motor) {
-        this.owner = owner;
-        this.model = model;
-        this.motor = motor;
+    public Coche() {
     }
 
     public String getOwner() {
         return owner;
     }
-
+    @Value("Tesla")
     public void setOwner(String owner) {
         this.owner = owner;
     }
@@ -31,7 +27,7 @@ public class Coche {
     public Integer getModel() {
         return model;
     }
-
+    @Value("2020")
     public void setModel(Integer model) {
         this.model = model;
     }
@@ -39,7 +35,7 @@ public class Coche {
     public Motor getMotor() {
         return motor;
     }
-
+    @Autowired
     public void setMotor(Motor motor) {
         this.motor = motor;
     }
