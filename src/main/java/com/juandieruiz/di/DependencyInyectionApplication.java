@@ -1,6 +1,6 @@
 package com.juandieruiz.di;
 
-import com.juandieruiz.di.qualifiers.Perro;
+import com.juandieruiz.di.qualifiers.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -18,9 +18,10 @@ public class DependencyInyectionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);
 
-		Perro perro = context.getBean(Perro.class);
+		Nido nido = context.getBean(Nido.class);
+		nido.imprimir();
 
-		log.info("Objeto Perro {}", perro.getNombre());
+		/* log.info("Objeto {}", objeto.getNombre()); */
 
 	}
 
