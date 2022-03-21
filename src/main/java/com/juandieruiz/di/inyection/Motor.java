@@ -1,4 +1,4 @@
-package com.juandieruiz.di.atributo;
+package com.juandieruiz.di.inyection;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
