@@ -13,7 +13,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 import com.juandieruiz.di.inyection.Coche;
 import org.springframework.context.annotation.Bean;
 
-
+/*
+Se puede remplazar por @SpringBootApplication con:
+@Configuration
+@ComponentScan
+EnableAutoConfiguration
+ */
 @SpringBootApplication
 public class DependencyInyectionApplication {
 
