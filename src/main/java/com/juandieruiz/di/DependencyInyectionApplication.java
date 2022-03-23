@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.juandieruiz.di.inyection.Coche;
+import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
@@ -17,10 +18,23 @@ public class DependencyInyectionApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(DependencyInyectionApplication.class);
 
+	// Definicion de Beans de forma explícita
+	@Bean
+	public String getApplicationName() {
+		return "JuanDieruiz Dev!";
+	}
+
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);
+		String nombreAplicacion = context.getBean(String.class);
+		log.info("Nombre de la aplicación: {}", nombreAplicacion);
+	}
 
-		EjemploScopeService ejemploScopeService1 = context.getBean(EjemploScopeService.class);
+
+}
+
+		/*
+		Scopes
 		EjemploScopeService ejemploScopeService2 = context.getBean(EjemploScopeService.class);
 
 
@@ -28,7 +42,7 @@ public class DependencyInyectionApplication {
 		log.info("Are beans == {} ", ejemploScopeService1 == ejemploScopeService2);
 
 
-		/*
+
 		Profiles
 		log.info("Active Environment: {}", environmentService.getEnvironment());
 
@@ -38,8 +52,3 @@ public class DependencyInyectionApplication {
 
 		Inyection
 		log.info("Objeto {}", objeto.getNombre()); */
-
-	}
-
-
-}
