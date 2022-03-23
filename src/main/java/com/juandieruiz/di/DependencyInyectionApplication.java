@@ -12,6 +12,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import com.juandieruiz.di.inyection.Coche;
 import org.springframework.context.annotation.Bean;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+
 
 /*
 Se puede remplazar por @SpringBootApplication con:
@@ -24,10 +28,16 @@ public class DependencyInyectionApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(DependencyInyectionApplication.class);
 
+	@Bean
+	public String getApplicationName() {
+		return "Juandieruiz rules!";
+	}
+
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);
-		AreaCalculatorService calculator = context.getBean(AreaCalculatorService.class);
-		log.info("Area Total: " + calculator.calcAreas());
+		// para probar expresiones correctamente
+		ExpressionParser parser = new SpelExpressionParser();
+		Expression expression  = parser.parseExpression("420 le 10");
+		log.info("Result: {}", expression.getValue());
 	}
 }
 
