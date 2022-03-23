@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 // @Scope( "singleton" ) Crea una sola instancia del bean por contenedor de Spring
-// @Scope("prototype") //Crea una nueva instancia cada vez que se solicita
+//  @Scope("prototype") //Crea una nueva instancia cada vez que se solicita
 public class EjemploScopeService {
 
     //      log.info("Are beans equal {} ", ejemploScopeService1.equals(ejemploScopeService2)); true con singleton

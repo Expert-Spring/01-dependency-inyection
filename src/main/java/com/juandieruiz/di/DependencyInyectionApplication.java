@@ -1,5 +1,6 @@
 package com.juandieruiz.di;
 
+import com.juandieruiz.di.autowire.AreaCalculatorService;
 import com.juandieruiz.di.profiles.EnvironmentService;
 import com.juandieruiz.di.qualifiers.*;
 import com.juandieruiz.di.scopes.EjemploScopeService;
@@ -18,6 +19,15 @@ public class DependencyInyectionApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(DependencyInyectionApplication.class);
 
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);
+		AreaCalculatorService calculator = context.getBean(AreaCalculatorService.class);
+		log.info("Area Total: " + calculator.calcAreas());
+	}
+}
+
+
+	/*
 	// Definicion de Beans de forma explícita
 	@Bean
 	public String getApplicationName() {
@@ -33,7 +43,7 @@ public class DependencyInyectionApplication {
 
 }
 
-		/*
+
 		Scopes
 		EjemploScopeService ejemploScopeService2 = context.getBean(EjemploScopeService.class);
 
