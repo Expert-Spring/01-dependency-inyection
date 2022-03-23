@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Profile("prod")
 public class ProdEnvironment implements EnvironmentService{
     @Override
-    public String getEnviroment() {
+    public String getEnvironment() {
         return "PROD";
     }
 }

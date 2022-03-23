@@ -1,5 +1,6 @@
 package com.juandieruiz.di;
 
+import com.juandieruiz.di.profiles.EnvironmentService;
 import com.juandieruiz.di.qualifiers.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +19,13 @@ public class DependencyInyectionApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);
 
-		Nido nido = context.getBean(Nido.class);
-		nido.imprimir();
+		EnvironmentService environmentService = context.getBean(EnvironmentService.class);
+
+		log.info("Active Environment: {}", environmentService.getEnvironment());
+
+
+		/* Nido nido = context.getBean(Nido.class);
+		nido.imprimir(); */
 
 		/* log.info("Objeto {}", objeto.getNombre()); */
 

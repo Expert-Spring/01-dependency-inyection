@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Profile("qa")
 public class QaEnvironment implements EnvironmentService  {
     @Override
-    public String getEnviroment() {
+    public String getEnvironment() {
         return "QA";
     }
 }
