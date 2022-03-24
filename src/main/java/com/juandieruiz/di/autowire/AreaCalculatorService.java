@@ -9,7 +9,11 @@ import java.util.List;
 public class AreaCalculatorService {
 
     @Autowired
-    private List<Figure> figureLists;
+    private final List<Figure> figureLists;
+
+    public AreaCalculatorService(List<Figure> figureLists) {
+        this.figureLists = figureLists;
+    }
 
     public double calcAreas() {
         double area=0;

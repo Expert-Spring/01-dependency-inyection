@@ -1,6 +1,7 @@
 package com.juandieruiz.di;
 
 import com.juandieruiz.di.autowire.AreaCalculatorService;
+import com.juandieruiz.di.lifecycle.LifeCycleBean;
 import com.juandieruiz.di.profiles.EnvironmentService;
 import com.juandieruiz.di.qualifiers.*;
 import com.juandieruiz.di.scopes.EjemploScopeService;
@@ -34,15 +35,19 @@ public class DependencyInyectionApplication {
 	}
 
 	public static void main(String[] args) {
-		// para probar expresiones correctamente
-		ExpressionParser parser = new SpelExpressionParser();
-		Expression expression  = parser.parseExpression("420 le 10");
-		log.info("Result: {}", expression.getValue());
+		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);
+		LifeCycleBean lifeCycleBean = context.getBean(LifeCycleBean.class);
 	}
 }
 
 
 	/*
+	// para probar expresiones correctamente con sPEL
+		ExpressionParser parser = new SpelExpressionParser();
+		Expression expression  = parser.parseExpression("420 le 10");
+		log.info("Result: {}", expression.getValue());
+
+
 	// Definicion de Beans de forma explícita
 	@Bean
 	public String getApplicationName() {
