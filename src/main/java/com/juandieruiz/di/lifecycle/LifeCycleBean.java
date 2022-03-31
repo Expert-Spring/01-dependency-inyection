@@ -3,6 +3,8 @@ package com.juandieruiz.di.lifecycle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -11,14 +13,16 @@ import javax.annotation.PreDestroy;
 
 // CICLOS DE VIDA DE UN BEAN
 @Component
-@Scope("prototype") //Debido a que el scope es prototype, no se ejecuta el PreDestroy
-public class LifeCycleBean implements BeanNameAware {
+// @Scope("prototype") Debido a que el scope es prototype, no se ejecuta el PreDestroy en beans de este tipo
+public class LifeCycleBean implements BeanNameAware, InitializingBean, DisposableBean {
     private static final Logger log = LoggerFactory.getLogger(LifeCycleBean.class);
 
-
+    /**
+     *  Se ejecutará durante la construcción el bean "BeanNameAware"
+     */
     @Override
     public void setBeanName(String name) {
-        log.info("--*Bean name Aware in construction for {}", name);
+        log.info("1.Bean name Aware in construction for {}", name);
     }
 
     /**
@@ -29,7 +33,7 @@ public class LifeCycleBean implements BeanNameAware {
     * */
     @PostConstruct
     public void init(){ // NO SE PUEDE RECIBIR PARAMETROS
-        log.info("Bean initialized - Post Construct");
+        log.info("2.Bean initialized - Post Construct");
     }
 
     /**
@@ -40,7 +44,35 @@ public class LifeCycleBean implements BeanNameAware {
      */
 
     @PreDestroy
-    public void destroy(){
-        log.info("App Off, Pre destroy");
+    public void destroyBean(){
+        log.info("3.App Off, Pre destroy");
     }
+
+    /**
+     * El implements InitializingBean nos hace implementar este metodo
+     *
+     */
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        log.info("4.After properties set method");
+    }
+
+    /**
+     *  El implements DisposableBean nos hace implementar este metodo
+     *
+     */
+    @Override
+    public void destroy() throws Exception {
+        log.info("5.After destroy method");
+    }
+
+    /**
+     * Primero se ejecutan las aware interfaces
+     * Segundo los callbacks con @PostConstruct
+     * Tercero AfterPropertiesSet
+     * Cuarto - aqui se inicializa la aplicacion
+     * Pero antes de destruirla
+     * Primero los metodos con @PreDestroy
+     * y al final el metodo destroy de la interface DisposableBean
+     */
 }

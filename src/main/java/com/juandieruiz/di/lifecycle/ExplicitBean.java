@@ -8,10 +8,10 @@ public class ExplicitBean {
     Logger log = LoggerFactory.getLogger(ExplicitBean.class);
 
     public void init() {
-        log.info("--*Init method from ExplicitBean*--");
+        log.info("6.Init method from ExplicitBean");
     }
 
     public void destroy() {
-        log.info("--*Destroy method from ExplicitBean*--");
+        log.info("7.Destroy method from ExplicitBean");
     }
 }
