@@ -15,16 +15,16 @@ public class LifeCycleBean implements BeanNameAware {
 
     @Override
     public void setBeanName(String name) {
-        log.info("Bean name Aware {}", name);
+        log.info("Bean name Aware in construction for {}", name);
     }
 
     @PostConstruct
-    public void init(){
-        log.info("Bean init");
+    public void init(){ // NO SE PUEDE RECIBIR PARAMETROS
+        log.info("Bean initialized");
     }
 
     @PreDestroy
     public void destroy(){
-        log.info("Bean Predestroy");
+        log.info("App Off, active Pre destroy");
     }
 }
