@@ -1,6 +1,7 @@
 package com.juandieruiz.di;
 
 import com.juandieruiz.di.autowire.AreaCalculatorService;
+import com.juandieruiz.di.lifecycle.ExplicitBean;
 import com.juandieruiz.di.lifecycle.LifeCycleBean;
 import com.juandieruiz.di.profiles.EnvironmentService;
 import com.juandieruiz.di.qualifiers.*;
@@ -32,6 +33,11 @@ public class DependencyInyectionApplication {
 	@Bean
 	public String getApplicationName() {
 		return "Juandieruiz rules!";
+	}
+
+	@Bean(initMethod = "init", destroyMethod = "destroy")
+	public ExplicitBean getExplicitBean() {
+		return new ExplicitBean();
 	}
 
 	public static void main(String[] args) {
