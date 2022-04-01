@@ -30,24 +30,17 @@ public class DependencyInyectionApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(DependencyInyectionApplication.class);
 
-	@Bean
-	public String getApplicationName() {
-		return "Juandieruiz rules!";
-	}
-
-	@Bean(initMethod = "init", destroyMethod = "destroy")
-	public ExplicitBean getExplicitBean() {
-		return new ExplicitBean();
-	}
-
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInyectionApplication.class, args);
-		LifeCycleBean lifeCycleBean = context.getBean(LifeCycleBean.class);
+
 	}
 }
 
 
 	/*
+	// Ciclo de vida
+	//LifeCycleBean lifeCycleBean = context.getBean(LifeCycleBean.class);
+
 	// para probar expresiones correctamente con sPEL
 		ExpressionParser parser = new SpelExpressionParser();
 		Expression expression  = parser.parseExpression("420 le 10");

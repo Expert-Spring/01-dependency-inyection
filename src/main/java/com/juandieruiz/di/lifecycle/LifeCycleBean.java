@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,8 @@ import javax.annotation.PreDestroy;
 // CICLOS DE VIDA DE UN BEAN
 @Component
 // @Scope("prototype") Debido a que el scope es prototype, no se ejecuta el PreDestroy en beans de este tipo
+// Los Beans Prototype son por default lazy
+@Lazy // Si el Bean es Lazy no se inicializara a menos que se inyecte
 public class LifeCycleBean implements BeanNameAware, InitializingBean, DisposableBean {
     private static final Logger log = LoggerFactory.getLogger(LifeCycleBean.class);
 
