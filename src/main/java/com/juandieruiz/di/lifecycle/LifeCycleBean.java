@@ -16,7 +16,7 @@ import javax.annotation.PreDestroy;
 @Component
 // @Scope("prototype") Debido a que el scope es prototype, no se ejecuta el PreDestroy en beans de este tipo
 // Los Beans Prototype son por default lazy
-@Lazy // Si el Bean es Lazy no se inicializara a menos que se inyecte
+@Lazy(false) // Si el Bean es Lazy no se inicializara a menos que se inyecte
 public class LifeCycleBean implements BeanNameAware, InitializingBean, DisposableBean {
     private static final Logger log = LoggerFactory.getLogger(LifeCycleBean.class);
 
