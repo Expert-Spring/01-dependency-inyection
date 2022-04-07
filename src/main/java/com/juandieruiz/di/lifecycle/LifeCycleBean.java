@@ -36,7 +36,7 @@ public class LifeCycleBean implements BeanNameAware, InitializingBean, Disposabl
     * */
     @PostConstruct
     public void init(){ // NO SE PUEDE RECIBIR PARAMETROS
-        log.info("2.Bean initialized - Post Construct");
+        log.info("2. Callback - Post Construct");
     }
 
     /**
@@ -66,7 +66,7 @@ public class LifeCycleBean implements BeanNameAware, InitializingBean, Disposabl
      */
     @Override
     public void destroy() throws Exception {
-        log.info("5.After destroy method");
+        log.info("5.DisposableBean - After destroy method");
     }
 
     /**

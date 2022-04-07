@@ -13,13 +13,17 @@ public class JuandieruizBeanPostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        logger.info("Before initialization of bean {}", beanName);
+        if (bean instanceof LifeCycleBean) {
+            logger.info("Before initialization of bean {}", beanName);
+        }
         return BeanPostProcessor.super.postProcessBeforeInitialization(bean, beanName);
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        logger.info("After initialization of bean {}", beanName);
+        if (bean instanceof LifeCycleBean) {
+            logger.info("After initialization of bean {}", beanName);
+        }
         return BeanPostProcessor.super.postProcessAfterInitialization(bean, beanName);
     }
 }
