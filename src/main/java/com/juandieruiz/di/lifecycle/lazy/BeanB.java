@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
-@Lazy(false) // Eager
+@Lazy// (false) // Eager
 public class BeanB {
 
     @Autowired
